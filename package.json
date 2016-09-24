@@ -1,0 +1,40 @@
+{
+  "name": "paralless",
+  "version": "0.1.0",
+  "description": "Simple Parallax powered by CSS3 Transitions",
+  "main": "dist/paralless.min.js",
+  "jsnext:main": "src/paralless.js",
+  "scripts": {
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/the-couch/paralless.git"
+  },
+  "keywords": [
+    "javascript",
+    "vanilla",
+    "parallax",
+    "es6"
+  ],
+  "author": "iamkevingreen <meetus@thecouch.nyc> (http://thecouch.nyc)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/the-couch/paralless/issues"
+  },
+  "homepage": "https://github.com/the-couch/paralless#readme",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "*",
+    "babel-plugin-transform-object-rest-spread": "*",
+    "browser-sync": "*",
+    "del": "*",
+    "gulp": "*",
+    "mkdirp": "*",
+    "node-notifier": "*",
+    "rollup": "*",
+    "rollup-plugin-babel": "*",
+    "rollup-plugin-commonjs": "*",
+    "rollup-plugin-node-resolve": "*",
+    "rollup-plugin-uglify": "*"
+  }
+}
