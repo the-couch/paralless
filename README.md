@@ -33,8 +33,8 @@ Current implementation is on the DOM, this may change to being JS focused (in th
 ```
 
 ```javascript
-let Paralless = swimming('.bradpitt');
-Paralless.init();
+let animate = Paralless('.bradpitt');
+animate.init();
 ```
 
 optional recommended css:
