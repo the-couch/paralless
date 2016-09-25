@@ -10,17 +10,7 @@ exports.default = function (className) {
   var tick = false;
   var targets = [].slice.call(document.querySelectorAll(className));
 
-  var instance = Object.create({
-    init: function init() {
-      window.addEventListener('scroll', handler);
-    }
-  });
-
-  return instance;
-
-  function handler() {
-    var force = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
-
+  var handler = function handler(e) {
     y = window.pageYOffset;
 
     if (!tick) {
@@ -29,13 +19,31 @@ exports.default = function (className) {
       });
       tick = true;
     }
-  }
+  };
 
-  function position(el) {
+  var position = function position(el) {
     var displace = el.getAttribute('data-speed') || 2;
     el.style.transform = 'translate3d(0px, ' + y / displace + 'px, 0px)';
     tick = false;
-  }
+  };
+
+  var init = function init() {
+    return window.addEventListener('scroll', handler);
+  };
+
+  var update = function update() {
+    return targets = [].slice.call(document.querySelectorAll(className));
+  };
+
+  var destroy = function destroy() {
+    return window.removeEventListener('scroll', handler);
+  };
+
+  return {
+    init: init,
+    update: update,
+    destroy: destroy
+  };
 };
 
 },{}]},{},[1])(1)
