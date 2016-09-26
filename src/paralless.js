@@ -1,30 +1,32 @@
+export default (className) => {
+  let y
+  let tick = false
+  let targets = [].slice.call(document.querySelectorAll(className))
 
-let Paralless = (className) => {
-  const instance = Object.create({
-    init: () => {
-      window.addEventListener('scroll', handleScroll)
+  const handler = e => {
+    y = window.pageYOffset 
+
+    if (!tick) {
+      window.requestAnimationFrame(() => targets.forEach(position))
+      tick = true
     }
-  })
-  return instance
-
-  function handleScroll() {
-    let elms = document.querySelectorAll(className)
-    elms.length ? Array.from(elms, (e) => { mI(e)}) : mI(elms)
   }
 
-  function mI(el) {
-    let scrollPosition = setPosition()
+  const position = el => {
     let displace = el.getAttribute('data-speed') || 2
-    el.style.transform = "translate3d(0px, "+(scrollPosition / displace)+"px, 0px)"
+    el.style.transform = `translate3d(0px, ${y / displace}px, 0px)`
+    tick = false
   }
 
-  function setPosition() {
-    if (window.pageYOffset !== undefined) {
-      return window.pageYOffset
-    } else {
-      return (document.documentElement || document.body.parentNode || document.body).scrollTop
-    }
+  const init = () => window.addEventListener('scroll', handler)
+
+  const update = () => targets = [].slice.call(document.querySelectorAll(className))
+
+  const destroy = () => window.removeEventListener('scroll', handler)
+
+  return {
+    init,
+    update,
+    destroy 
   }
 }
-
-exports.Paralless = Paralless

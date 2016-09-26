@@ -1,0 +1,50 @@
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.paralless = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (className) {
+  var y = void 0;
+  var tick = false;
+  var targets = [].slice.call(document.querySelectorAll(className));
+
+  var handler = function handler(e) {
+    y = window.pageYOffset;
+
+    if (!tick) {
+      window.requestAnimationFrame(function () {
+        return targets.forEach(position);
+      });
+      tick = true;
+    }
+  };
+
+  var position = function position(el) {
+    var displace = el.getAttribute('data-speed') || 2;
+    el.style.transform = 'translate3d(0px, ' + y / displace + 'px, 0px)';
+    tick = false;
+  };
+
+  var init = function init() {
+    return window.addEventListener('scroll', handler);
+  };
+
+  var update = function update() {
+    return targets = [].slice.call(document.querySelectorAll(className));
+  };
+
+  var destroy = function destroy() {
+    return window.removeEventListener('scroll', handler);
+  };
+
+  return {
+    init: init,
+    update: update,
+    destroy: destroy
+  };
+};
+
+},{}]},{},[1])(1)
+});
