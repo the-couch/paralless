@@ -1,6 +1,6 @@
 {
   "name": "paralless",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Simple Parallax powered by CSS3 Transitions",
   "main": "dist/paralless.min.js",
   "jsnext:main": "src/paralless.js",
