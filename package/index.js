@@ -4,7 +4,7 @@ export default (className) => {
   let targets = [].slice.call(document.querySelectorAll(className))
 
   const handler = e => {
-    y = window.pageYOffset 
+    y = window.pageYOffset
 
     if (!tick) {
       window.requestAnimationFrame(() => targets.forEach(position))
@@ -20,13 +20,13 @@ export default (className) => {
 
   const init = () => window.addEventListener('scroll', handler)
 
-  const update = () => targets = [].slice.call(document.querySelectorAll(className))
+  const update = () => { targets = [].slice.call(document.querySelectorAll(className)) }
 
   const destroy = () => window.removeEventListener('scroll', handler)
 
   return {
     init,
     update,
-    destroy 
+    destroy
   }
 }
