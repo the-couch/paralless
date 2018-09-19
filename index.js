@@ -1,19 +1,11 @@
 export default function paralless (attr = 'data-paralless') {
-  let scroll
-  let resize
+  let stopped = false
   let y = window.scrollY
+  let py = y
   let vh = window.innerHeight
   let cache = new Map()
-  let tick = false
 
   return function mount () {
-    if (!scroll) {
-      scroll = window.addEventListener('scroll', onscroll)
-    }
-
-    if (!resize) {
-      resize = window.addEventListener('resize', reflow)
-    }
 
     /**
      * remove old nodes
@@ -46,28 +38,26 @@ export default function paralless (attr = 'data-paralless') {
      */
     reflow()
 
-    function onscroll (e) {
+    function animate () {
       y = window.scrollY
 
-      if (!tick) {
-        requestAnimationFrame(() => {
-          cache.forEach(c => {
-            const { node, speed, offset } = c
-            const bounds = node.getBoundingClientRect()
-            const nodeTop = bounds.top + y
-            const nodeBot = nodeTop + bounds.height
+      if (py !== y) {
+        py = y
 
-            if ((nodeBot >= y) && (nodeTop <= (y + vh))) {
-              c.transform = (y - offset) * speed
-              node.style.transform = `translate3d(0px, ${c.transform}px, 0px)`
-            }
-          })
+        cache.forEach(c => {
+          const { node, speed, offset } = c
+          const bounds = node.getBoundingClientRect()
+          const nodeTop = bounds.top + y
+          const nodeBot = nodeTop + bounds.height
 
-          tick = false
+          if ((nodeBot >= y) && (nodeTop <= (y + vh))) {
+            c.transform = ((y - offset) * speed).toFixed()
+            node.style.transform = `translate3d(0px, ${c.transform}px, 0px)`
+          }
         })
-
-        tick = true
       }
+
+      !stopped && requestAnimationFrame(animate)
     }
 
     function reflow () {
@@ -78,14 +68,11 @@ export default function paralless (attr = 'data-paralless') {
         c.offset = y + (c.node.getBoundingClientRect().top - vh) - c.transform
       })
 
-      onscroll()
+      animate()
     }
 
     return function destroy () {
-      window.removeEventListener('scroll', onscroll)
-      window.removeEventListener('resize', reflow)
-      scroll = null
-      resize = null
+      stopped = true
       cache.clear()
     }
   }
