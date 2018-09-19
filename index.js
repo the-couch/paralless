@@ -29,9 +29,9 @@ export default function paralless (attr = 'data-paralless') {
       const node = nodes[i]
 
       if (!cache.has(node)) {
-        const speed = node.getAttribute(attr)
+        const speed = parseFloat(node.getAttribute(attr) || 0.25)
 
-        if (parseInt(speed) > 0) continue
+        if (speed >= 5) continue
 
         cache.set(node, {
           node,
