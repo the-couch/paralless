@@ -1,11 +1,11 @@
 export default function paralless (attr = 'data-paralless') {
-  let stopped = false
   let y = window.scrollY
   let py = y
   let vh = window.innerHeight
   let cache = new Map()
 
-  return function mount () {
+  return function init () {
+    let stopped = false
 
     /**
      * remove old nodes
