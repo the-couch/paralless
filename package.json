@@ -27,5 +27,8 @@
   "homepage": "https://github.com/estrattonbailey/paralless#readme",
   "devDependencies": {
     "microbundle": "^0.4.4"
+  },
+  "dependencies": {
+    "srraf": "^3.0.0"
   }
 }
