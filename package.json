@@ -29,6 +29,7 @@
     "microbundle": "^0.4.4"
   },
   "dependencies": {
+    "myxt": "0.0.1",
     "srraf": "^3.0.0"
   }
 }

@@ -1,5 +1,5 @@
 # paralless
-Hyper-minimal parallax implementation for subtle animation. **600b gzipped.**
+Hyper-minimal parallax implementation for subtle animation. **900b gzipped.**
 
 ## Usage
 Specify attibutes and speeds for any elements you want parallaxed. Consider the

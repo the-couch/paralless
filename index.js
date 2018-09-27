@@ -1,4 +1,5 @@
 import srraf from 'srraf'
+import tx from 'myxt'
 
 export default function paralless (attr = 'data-paralless') {
   let y = window.scrollY
@@ -27,7 +28,7 @@ export default function paralless (attr = 'data-paralless') {
         cache.set(node, {
           node,
           speed,
-          transform: 0,
+          transform: tx(node),
           offset: Math.max(y + (node.getBoundingClientRect().top - vh), 0) // cache
         })
       }
@@ -41,8 +42,8 @@ export default function paralless (attr = 'data-paralless') {
         const nodeBot = nodeTop + bounds.height
 
         if ((nodeBot >= y) && (nodeTop <= (y + vh))) {
-          c.transform = Math.round(((y - offset) * speed))
-          node.style.transform = `translate3d(0px, ${c.transform}px, 0px)`
+          transform.translateY(Math.round(((y - offset) * speed)))
+          node.style.transform = transform.toString()
         }
       })
     })
@@ -53,3 +54,5 @@ export default function paralless (attr = 'data-paralless') {
     }
   }
 }
+
+
