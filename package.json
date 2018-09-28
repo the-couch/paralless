@@ -1,6 +1,6 @@
 {
   "name": "paralless",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Hyper-minimal parallax implementation for subtle animation.",
   "source": "index.js",
   "module": "dist/paralless.es.js",
