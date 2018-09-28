@@ -25,6 +25,12 @@
     "url": "https://github.com/estrattonbailey/paralless/issues"
   },
   "homepage": "https://github.com/estrattonbailey/paralless#readme",
+  "keywords": [
+    "parallax",
+    "tiny",
+    "micro",
+    "minimal"
+  ],
   "devDependencies": {
     "microbundle": "^0.4.4"
   },
