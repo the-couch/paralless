@@ -1,54 +1,35 @@
 {
   "name": "paralless",
-  "version": "0.2.0",
-  "description": "Simple Parallax powered by CSS3 Transitions",
-  "main": "dist/paralless.min.js",
-  "jsnext:main": "src/paralless.js",
+  "version": "0.4.0",
+  "description": "Hyper-minimal parallax implementation for subtle animation.",
+  "source": "index.js",
+  "module": "dist/paralless.es.js",
+  "jsnext:main": "dist/paralless.es.js",
+  "main": "dist/paralless.js",
+  "umd:main": "dist/paralless.umd.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "mkdir -p dist && browserify src/paralless.js --standalone paralless > dist/paralless.browserify.js"
-  },
-  "browserify": {
-    "debug": true,
-    "cache": {},
-    "packageCache": {},
-    "extension": [
-      "js"
-    ],
-    "transform": [
-      "babelify"
-    ]
+    "build": "microbundle build",
+    "watch": "microbundle watch --compress false",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/the-couch/paralless.git"
+    "url": "git+ssh://git@github.com/estrattonbailey/paralless.git"
   },
-  "keywords": [
-    "javascript",
-    "vanilla",
-    "parallax",
-    "es6"
-  ],
-  "author": "iamkevingreen <meetus@thecouch.nyc> (http://thecouch.nyc)",
+  "author": "iamkevingreen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/the-couch/paralless/issues"
+    "url": "https://github.com/estrattonbailey/paralless/issues"
   },
-  "homepage": "https://github.com/the-couch/paralless#readme",
+  "homepage": "https://github.com/estrattonbailey/paralless#readme",
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "*",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-es2015-rollup": "*",
-    "babelify": "^7.3.0",
-    "browser-sync": "*",
-    "browserify": "^13.1.0",
-    "del": "*",
-    "gulp": "*",
-    "mkdirp": "*",
-    "node-notifier": "*",
-    "rollup": "*",
-    "rollup-plugin-babel": "*",
-    "rollup-plugin-commonjs": "*",
-    "rollup-plugin-node-resolve": "*",
-    "rollup-plugin-uglify": "*"
+    "microbundle": "^0.4.4"
+  },
+  "dependencies": {
+    "myxt": "0.0.1",
+    "srraf": "^3.0.0"
   }
 }
